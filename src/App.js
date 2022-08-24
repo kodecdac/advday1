@@ -2,8 +2,6 @@
 function App() {
   let username = "cdac kharghar";
   let id = "id2";
-  let price = 99.99;
-  let active = true;
 
   return (
     <div>
