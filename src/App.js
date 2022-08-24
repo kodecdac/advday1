@@ -1,25 +1,30 @@
+import { useRef } from "react";
+
 // Basic Interpolation
 function App() {
-  let list = ["delhi", "calcutta", "mumbai", "kharghar"];
-  let list1 = [
-    { id: 1, username: "rohit", active: true },
-    { id: 2, username: "rahul", active: true },
-    { id: 3, username: "virat", active: false },
-  ];
+  let inputRef = useRef();
+
+  // useRef hook based. :: REACT BASED
+  let captureName1 = () => {
+    console.log(inputRef.current.value);
+  };
+
+  // DOM BASED
+  let captureName = () => {
+    console.log(document.getElementById("id1"));
+    let name = document.getElementById("id1").value;
+    console.log(name);
+  };
 
   return (
     <div>
-      <h1>Working with List</h1>
+      <h1>Form 1</h1>
+      <input type="text" ref={inputRef} />
+      <input type="button" value="Using Ref" onClick={captureName1} />
 
-      <ul>
-        {list1
-          .filter((item) => !item.active)
-          .map((item, index) => (
-            <li key={index}>
-              {item.id} and {item.username}
-            </li>
-          ))}
-      </ul>
+      <h1>Form 0</h1>
+      <input type="text" id="id1" />
+      <input type="button" value="Enter Your Name" onClick={captureName} />
     </div>
   );
 }
