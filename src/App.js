@@ -1,20 +1,22 @@
 // Basic Interpolation
 function App() {
   let list = ["delhi", "calcutta", "mumbai", "kharghar"];
-  // ["<h1>delhi</h1>", "<h1>calcutta</h1>", ]
+  let list1 = [
+    { id: 1, username: "rohit" },
+    { id: 2, username: "rahul" },
+  ];
+
   return (
     <div>
       <h1>Working with List</h1>
 
       <ul>
-        {list.map((item, index) => (
-          <li>{item}</li>
+        {list1.map((item, index) => (
+          <li key={index}>
+            {item.id} and {item.username}
+          </li>
         ))}
       </ul>
-
-      {list.map((item, index) => (
-        <h1>{item}</h1>
-      ))}
     </div>
   );
 }
