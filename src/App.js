@@ -1,9 +1,15 @@
-// Its Component / Tag
-// User Defined Tag
-// <App /> || <h1 />
+// Basic Interpolation
 function App() {
-  return <h1>Hello World / Rendered!</h1>;
+  let username = "cdac kharghar";
+
+  return (
+    <div>
+      <h1>Interplation Demo</h1>
+      <h1> {username} </h1>
+      <h1> {console.log("hello javascript in html")} </h1>
+      <h1> {alert("hello")} </h1>
+    </div>
+  );
 }
 
-// ES 6 SYNTAX
 export default App;
