@@ -1,28 +1,20 @@
 // Basic Interpolation
 function App() {
-  let username = "cdac kharghar";
-  let id = "id2";
-
-  let sayHello = (e) => {
-    console.log(e);
-  };
-
-  let helloAgain = (p1, p2) => {
-    console.log(p1, p2);
-  };
-
+  let list = ["delhi", "calcutta", "mumbai", "kharghar"];
+  // ["<h1>delhi</h1>", "<h1>calcutta</h1>", ]
   return (
     <div>
-      <h1>Interplation Demo</h1>
-      <h1 id={id}>{username}</h1>
+      <h1>Working with List</h1>
 
-      <input type="button" value="Purchase Item" onClick={sayHello} />
-      <input type="button" value="working with param" onClick={helloAgain} />
-      <input
-        type="button"
-        value="working with param demo"
-        onClick={() => helloAgain("delhi", "calcutta")}
-      />
+      <ul>
+        {list.map((item, index) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+
+      {list.map((item, index) => (
+        <h1>{item}</h1>
+      ))}
     </div>
   );
 }
