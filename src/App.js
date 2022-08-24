@@ -1,12 +1,9 @@
-// JSX => JavaScript XML
-// NEEDS TO RETURN TAG
-// Strict - Only one Root/Parent Tag
+// Its Component / Tag
+// User Defined Tag
+// <App /> || <h1 />
 function App() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <h1>Hello World / Rendered!</h1>;
 }
 
+// ES 6 SYNTAX
 export default App;
