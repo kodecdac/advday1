@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import React from "react"; // External Module
 import App from "./App"; // LOCAL MODULE / Program PART OF src folder

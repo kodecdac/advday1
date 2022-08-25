@@ -1,30 +1,49 @@
 import { useRef } from "react";
+import { Col, Row } from "react-bootstrap";
 
 // Basic Interpolation
 function App() {
-  let inputRef = useRef();
-
-  // useRef hook based. :: REACT BASED
-  let captureName1 = () => {
-    console.log(inputRef.current.value);
-  };
-
-  // DOM BASED
-  let captureName = () => {
-    console.log(document.getElementById("id1"));
-    let name = document.getElementById("id1").value;
-    console.log(name);
-  };
-
   return (
     <div>
-      <h1>Form 1</h1>
-      <input type="text" ref={inputRef} />
-      <input type="button" value="Using Ref" onClick={captureName1} />
+      <Row>
+        <Col md={3} className="bg-primary d-none d-md-block">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+          voluptatum, excepturi, molestias sed iusto provident asperiores
+          architecto eos magnam corporis possimus vero obcaecati soluta beatae
+          blanditiis non modi voluptas pariatur.
+        </Col>
+        <Col sm={12} md={6} className="bg-danger">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime,
+          temporibus doloremque. Vel mollitia unde iste reprehenderit, facere
+          provident voluptates voluptas quas eligendi perferendis minus id
+          nesciunt quos optio, delectus nulla.
+        </Col>
+        <Col md={3} className="bg-warning d-none d-md-block">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
+          minus nemo quo recusandae mollitia. Architecto mollitia illum maiores
+          fugiat deleniti dolore itaque adipisci, eaque consequatur error quidem
+          pariatur delectus minus!
+        </Col>
+      </Row>
 
-      <h1>Form 0</h1>
-      <input type="text" id="id1" />
-      <input type="button" value="Enter Your Name" onClick={captureName} />
+      <div className="row">
+        <div className="d-none d-md-block col-md-2 bg-primary">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam cum
+          deserunt iusto eveniet minima quo quasi impedit at dicta id. Provident
+          mollitia earum explicabo ipsum quasi? Optio provident quidem
+          aspernatur!
+        </div>
+        <div className="col-md-8 bg-info">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum harum
+          fugit
+        </div>
+        <div className="d-none d-md-block col-md-2 bg-success">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, et
+          suscipit. A voluptatem architecto nam ea quasi, voluptatibus iste
+          velit, esse repudiandae voluptas perferendis, harum consectetur earum
+          maxime facilis assumenda.
+        </div>
+      </div>
     </div>
   );
 }
