@@ -3,6 +3,13 @@ import { Col, Row } from "react-bootstrap";
 function App() {
   return (
     <div>
+      <div
+        className="bg-primary text-light text-nowrap text-dark text-truncate"
+        style={{ width: "100px" }}
+      >
+        Lorem ipsum dolor sit amet.
+      </div>
+
       <Row>
         <Col md={3} className="d-none d-md-block bg-info">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
