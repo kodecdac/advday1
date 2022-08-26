@@ -1,61 +1,70 @@
-import { Col, Row } from "react-bootstrap";
-
+// ONE COMPONENT :: CONS => SHARING THE DATA
+// TAG :: XML ELMENT
+// <App />
 function App() {
   return (
     <div>
-      <div
-        className="bg-primary text-light text-nowrap text-dark text-truncate"
-        style={{ width: "100px" }}
-      >
-        Lorem ipsum dolor sit amet.
-      </div>
+      <Header />
+      <AppBody />
+      <Footer />
+    </div>
+  );
+}
 
-      <Row>
-        <Col md={3} className="d-none d-md-block bg-info">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-          eligendi consequuntur eaque vel ipsa deleniti asperiores ipsum,
-          delectus consequatur sapiente veniam voluptatum facilis suscipit
-          natus, provident maiores, possimus assumenda voluptas.
-        </Col>
-        <Col sm={12} md={6} className="bg-success">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-          cupiditate magnam aut pariatur assumenda alias, optio repellendus,
-          neque expedita dolorem fuga similique. Officia possimus tenetur
-          voluptas veritatis a aperiam fugit? Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. At reiciendis repudiandae, laboriosam
-          hic voluptatum libero. Beatae, quas! Est veritatis, magnam sint culpa
-          praesentium iure natus, consequuntur accusamus nam corrupti
-          repellendus!
-        </Col>
-        <Col md={3} className="d-none d-md-block bg-danger">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eum
-          sint aliquid deserunt minus minima excepturi cupiditate sit iste
-          suscipit cumque, labore dolores recusandae voluptatem sequi delectus
-          pariatur similique inventore.
-        </Col>
-      </Row>
+// MEMBER 1
+// COMPONENT :: Header
+// <Header /> :: XML TAG :: CUSTOM TAG
+function Header() {
+  return (
+    <div>
+      <h1 className="bg-primary text-light p-2 m-0">Header Block</h1>
+    </div>
+  );
+}
 
-      {/** RESPONSIVE IN BOOTSTRAP */}
-      <div className="row">
-        <div className="d-none d-md-block col-md-3 bg-primary">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat,
-          dignissimos ut. Quam in perferendis omnis excepturi, quod quibusdam.
-          Totam non aperiam vero repudiandae quia optio ipsam at dolor minima
-          illo?
-        </div>
-        <div className="col-sm-12 col-md-6 bg-secondary">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda
-          expedita eligendi, quis nulla eveniet vel error, nostrum maiores
-          molestiae debitis quos nemo sit temporibus quae ipsa, cumque itaque?
-          Doloribus, vero!
-        </div>
-        <div className="d-none d-md-block col-md-3 bg-info">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit amet
-          dolore corrupti delectus modi saepe maiores corporis libero veniam,
-          repudiandae et repellendus doloribus impedit excepturi id commodi at
-          obcaecati harum.
-        </div>
-      </div>
+// MEMBER 2
+function Footer() {
+  return (
+    <div>
+      <h1 className="bg-secondary text-light p-3">Footer Block</h1>
+      <p className="alert alsert-secondary">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eaque eos
+        voluptates veritatis aspernatur illum sit repellendus modi, fugiat
+        libero ullam, rem reprehenderit perferendis. Recusandae blanditiis
+        delectus consequuntur neque fuga.
+      </p>
+    </div>
+  );
+}
+
+// MEMBER 3
+function AppBody() {
+  return (
+    <div className="my-1">
+      <div className="alert alert-dark mb-0">Main Body</div>
+      <p className="alert alert-secondary">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam neque
+        eveniet cum voluptatum maiores suscipit at expedita, et ab odit cumque?
+        Harum corporis possimus repellendus nisi iusto voluptas et, inventore
+        optio enim! Nisi pariatur optio accusamus modi quia et fugit voluptatem
+        sunt hic dignissimos nihil ut necessitatibus autem aperiam, earum
+        accusantium quod quidem veritatis voluptatibus architecto molestias
+        voluptates eos vero ipsam. Numquam maiores quam pariatur odit ullam
+        itaque labore praesentium, consequuntur magnam, minima enim maxime a
+        quia. Ipsam, odio! Quasi magnam dolore iusto itaque voluptate!
+        Voluptatem animi tempora odio laboriosam ad accusamus, eum harum eos
+        blanditiis corrupti, aspernatur eius. Aliquid atque harum cum saepe.
+        Nulla harum voluptas, dolorum optio debitis fugit mollitia, explicabo
+        vero quidem quam sunt itaque praesentium ad deleniti est porro, nemo
+        tenetur rerum officiis. Suscipit, voluptatem error ullam sint molestias
+        hic tenetur, nihil incidunt in rerum perferendis sunt qui ducimus ad
+        quam voluptate deserunt voluptatum dolores assumenda dolorem consectetur
+        aliquam vero! Unde voluptate saepe ut dicta impedit voluptas eos tempore
+        sunt harum. Quia, quod. Hic, dolorum! Provident veniam porro aliquid
+        asperiores esse possimus quas officia atque nostrum, velit quam ullam
+        repudiandae! Rem aperiam dolore corrupti eius ea, neque sit ratione
+        consectetur consequatur repellat sapiente veniam, voluptatem ipsam?
+      </p>
     </div>
   );
 }
