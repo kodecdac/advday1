@@ -1,16 +1,21 @@
+import { useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorPage from "./ErrorPage";
+
 function Project() {
   return (
-    <div>
+    <ErrorBoundary FallbackComponent={ErrorPage}>
       <ProjectA />
       <ProjectB />
-    </div>
+    </ErrorBoundary>
   );
 }
 
 function ProjectA() {
+  const [project] = useState({});
   return (
     <div>
-      <h1>Project A</h1>
+      <h1>Project {project.name.toUpperCase()}</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, temporibus?
         Fuga ipsa veniam distinctio neque sapiente eos vitae reprehenderit sequi
