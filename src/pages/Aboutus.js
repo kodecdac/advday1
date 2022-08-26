@@ -8,6 +8,7 @@ function AboutUs() {
     price: 0,
     gender: "",
     agree: false,
+    fruit: "",
   });
 
   const handleChange = (e) => {
@@ -78,7 +79,6 @@ function AboutUs() {
           checked={user.gender === "female"}
         />{" "}
         FeMale
-        <input type="button" value="Sumit" className="w-100" />
         <div>
           <input
             className="form-check-input"
@@ -89,6 +89,15 @@ function AboutUs() {
           />{" "}
           I Agree
         </div>
+        <select name="fruit" value={user.fruit} onChange={handleChange}>
+          <option value="grapefruit">Grapefruit</option>
+          <option value="lime">Lime</option>
+          <option selected value="coconut">
+            Coconut
+          </option>
+          <option value="mango">Mango</option>
+        </select>
+        <input type="button" value="Sumit" className="w-100" />
       </form>
     </div>
   );
