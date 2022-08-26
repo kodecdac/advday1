@@ -3,8 +3,12 @@ import { ErrorBoundary } from "react-error-boundary";
 import ErrorPage from "./ErrorPage";
 
 function Project() {
+  const handleError = (error, info) => {
+    console.log(error);
+  };
+
   return (
-    <ErrorBoundary FallbackComponent={ErrorPage}>
+    <ErrorBoundary FallbackComponent={ErrorPage} onError={handleError}>
       <ProjectA />
       <ProjectB />
     </ErrorBoundary>
