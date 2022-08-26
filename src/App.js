@@ -1,6 +1,6 @@
-import AppBody from "./AppBody";
-import Footer from "./Footer";
-import Header from "./Header";
+import AppBody from "./component/AppBody";
+import Footer from "./component/Footer";
+import Header from "./component/Header";
 
 function App() {
   return (
