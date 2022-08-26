@@ -7,6 +7,7 @@ function AboutUs() {
     desc: "",
     price: 0,
     gender: "",
+    agree: false,
   });
 
   const handleChange = (e) => {
@@ -15,6 +16,9 @@ function AboutUs() {
     switch (type) {
       case "number":
         setUser({ ...user, [name]: Number(value) });
+        break;
+      case "checkbox":
+        setUser({ ...user, [name]: e.target.checked });
         break;
       default:
         setUser({ ...user, [name]: value });
@@ -75,6 +79,16 @@ function AboutUs() {
         />{" "}
         FeMale
         <input type="button" value="Sumit" className="w-100" />
+        <div>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            name="agree"
+            checked={user.agree}
+            onChange={handleChange}
+          />{" "}
+          I Agree
+        </div>
       </form>
     </div>
   );
