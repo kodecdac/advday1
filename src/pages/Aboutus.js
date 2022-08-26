@@ -1,6 +1,10 @@
+import Footer from "../component/Footer";
+import Header from "../component/Header";
+
 function AboutUs() {
   return (
     <div>
+      <Header />
       <h1>About Us Page</h1>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam vero
@@ -15,6 +19,7 @@ function AboutUs() {
         numquam aliquid ullam eum aut! A, neque? Illo aliquid officia magni,
         laudantium dolorum ad error ipsam.
       </p>
+      <Footer />
     </div>
   );
 }
