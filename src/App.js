@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import AboutUs from "./pages/Aboutus";
-import AppNavigation from "./pages/AppNavigation";
+import AppNavigation, { AppNavigationNavBar } from "./pages/AppNavigation";
+
 import Home from "./pages/Home";
 import Main from "./pages/Main";
 import Project from "./pages/Project";
@@ -8,7 +9,7 @@ import Project from "./pages/Project";
 function App() {
   return (
     <BrowserRouter>
-      <AppNavigation />
+      <AppNavigationNavBar />
 
       <Routes>
         <Route path="/" element={<Home />} />

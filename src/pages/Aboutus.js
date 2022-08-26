@@ -4,7 +4,6 @@ import Header from "../component/Header";
 function AboutUs() {
   return (
     <div>
-      <Header />
       <h1>About Us Page</h1>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam vero

@@ -5,7 +5,6 @@ import AppBody from "../component/AppBody";
 function Home() {
   return (
     <>
-      <Header />
       <AppBody />
       <Footer />
     </>
