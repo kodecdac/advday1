@@ -1,8 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
+      {/** COMMON NAVIGTION */}
+      <Link to="/">Main | </Link>
+      <Link to="/project">Project | </Link>
+      <Link to="/aboutus">About Us</Link>
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/aboutus" element={<AboutUs />} />
