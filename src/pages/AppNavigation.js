@@ -34,6 +34,9 @@ function AppNavigationNavBar() {
             <Nav.Link to="/aboutus" as={Link}>
               About Us
             </Nav.Link>
+            <Nav.Link to="/generic" as={Link}>
+              Genric Form
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
