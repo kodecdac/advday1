@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 function AboutUs() {
-  let [user, setUser] = useState({ username: "", email: "", price: 0 });
+  let [user, setUser] = useState({
+    username: "",
+    password: "",
+    desc: "",
+    price: 0,
+  });
 
   const handleChange = (e) => {
     let value1 = e.target.value;
@@ -21,11 +26,19 @@ function AboutUs() {
       />
 
       <input
-        type="text"
+        type="password"
         className="form-control"
-        name="email"
-        placeholder="Enter Email"
-        value={user.email}
+        name="password"
+        placeholder="Enter password"
+        value={user.password}
+        onChange={handleChange}
+      />
+
+      <textarea
+        className="form-control"
+        name="desc"
+        placeholder="Enter desc"
+        value={user.desc}
         onChange={handleChange}
       />
 
