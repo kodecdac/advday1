@@ -1,4 +1,13 @@
+import { Link, useNavigate } from "react-router-dom";
+
 function Main() {
+  const navigate = useNavigate();
+
+  const goToProjectPage = () => {
+    // logical operations :: dynamic
+    navigate("/project");
+  };
+
   return (
     <div>
       <h1>Main</h1>
@@ -15,6 +24,15 @@ function Main() {
         ex sint quibusdam veniam exercitationem eligendi consequatur eum
         repellendus ad! Debitis, ad perferendis.
       </p>
+
+      <Link to="/project">Project Page Using Link Tag</Link>
+
+      <input
+        className="btn btn-outline-secondary"
+        type="button"
+        value="Project Explorer"
+        onClick={goToProjectPage}
+      />
     </div>
   );
 }
