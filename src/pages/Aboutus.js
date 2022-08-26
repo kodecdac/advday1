@@ -1,24 +1,44 @@
-import Footer from "../component/Footer";
-import Header from "../component/Header";
+import { useState } from "react";
 
 function AboutUs() {
+  let [user, setUser] = useState({ username: "", email: "", price: 0 });
+
+  const handleChange = (e) => {
+    let value1 = e.target.value;
+
+    setUser({ ...user, [e.target.name]: value1 });
+  };
+
   return (
     <div>
-      <h1>About Us Page</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam vero
-        incidunt eveniet nemo ratione quibusdam fugiat, voluptas error labore ad
-        blanditiis, voluptates explicabo deleniti. Tenetur voluptatum nemo iste
-        aliquid, magnam fuga eveniet ipsa eaque commodi quidem dolores
-        consequuntur blanditiis perspiciatis voluptates corrupti illo eligendi
-        est animi repellat totam facere. Eveniet tempore illum beatae quidem
-        dolorem eligendi autem fugit nesciunt iste iure numquam itaque suscipit
-        id nostrum tenetur magni facilis impedit, molestiae laboriosam fugiat
-        unde labore neque esse vel! Adipisci sequi ea officia porro minima
-        numquam aliquid ullam eum aut! A, neque? Illo aliquid officia magni,
-        laudantium dolorum ad error ipsam.
-      </p>
-      <Footer />
+      <input
+        type="text"
+        className="form-control"
+        name="username"
+        placeholder="Enter name"
+        value={user.username}
+        onChange={handleChange}
+      />
+
+      <input
+        type="text"
+        className="form-control"
+        name="email"
+        placeholder="Enter Email"
+        value={user.email}
+        onChange={handleChange}
+      />
+
+      <input
+        type="number"
+        className="form-control"
+        name="price"
+        placeholder="Enter Price"
+        value={user.price}
+        onChange={handleChange}
+      />
+
+      <input type="button" value="Sumit" />
     </div>
   );
 }
