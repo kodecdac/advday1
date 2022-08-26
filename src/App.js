@@ -4,9 +4,7 @@ function App() {
   return (
     <BrowserRouter>
       {/** COMMON NAVIGTION */}
-      <Link to="/">Main | </Link>
-      <Link to="/project">Project | </Link>
-      <Link to="/aboutus">About Us</Link>
+      <AppNavigation />
 
       <Routes>
         <Route path="/" element={<Main />} />
@@ -14,6 +12,16 @@ function App() {
         <Route path="/project" element={<Project />} />
       </Routes>
     </BrowserRouter>
+  );
+}
+
+function AppNavigation() {
+  return (
+    <>
+      <Link to="/">Main | </Link>
+      <Link to="/project">Project | </Link>
+      <Link to="/aboutus">About Us</Link>
+    </>
   );
 }
 
