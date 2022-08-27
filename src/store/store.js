@@ -19,29 +19,11 @@ export const counterSlice = createSlice({
   },
 });
 
-export const likeCounterSlice = createSlice({
-  name: "likeCounter",
-  initialState: {
-    lvalue: 0,
-  },
-  reducers: {
-    lincrement: (state) => {
-      state.lvalue += 1;
-    },
-    ldecrement: (state) => {
-      state.lvalue -= 1;
-    },
-  },
-});
-
-export const { lincrement, ldecrement } = likeCounterSlice.actions;
-const likeCounterReducer = likeCounterSlice.reducer;
-
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 const counterReducer = counterSlice.reducer;
 
 export default configureStore({
-  reducer: { counter: counterReducer, likeCounter: likeCounterReducer },
+  reducer: { counter: counterReducer },
 });
 
 export const incrementAsync = () => {
