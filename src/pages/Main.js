@@ -1,7 +1,11 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { incrementAsync } from "../store/store";
 
 function Main() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   const goToProjectPage = () => {
     // logical operations :: dynamic
@@ -10,7 +14,9 @@ function Main() {
 
   return (
     <div>
-      <h1>Main</h1>
+      <h1>
+        Main {state.counter?.value} / {state.likeCounter?.lvalue}
+      </h1>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis debitis
         ea dignissimos optio reiciendis? Asperiores impedit qui architecto
@@ -32,6 +38,12 @@ function Main() {
         type="button"
         value="Project Explorer"
         onClick={goToProjectPage}
+      />
+
+      <input
+        type="button"
+        value="Async Incrment"
+        onClick={() => dispatch(incrementAsync())}
       />
     </div>
   );
