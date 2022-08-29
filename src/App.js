@@ -4,7 +4,7 @@ import AppNavigation, { AppNavigationNavBar } from "./pages/AppNavigation";
 import GenericRegisterForm from "./pages/GenericRegisterForm";
 
 import Home from "./pages/Home";
-import Main from "./pages/Main";
+import Main, { MainA, MainB } from "./pages/Main";
 import Project, { ProjectA, ProjectB } from "./pages/Project";
 
 function App() {
@@ -14,7 +14,11 @@ function App() {
 
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="/main" element={<Main />}>
+          <Route index element={<MainA />} />
+          <Route path="maina" element={<MainA />} />
+          <Route path="mainb" element={<MainB />} />
+        </Route>
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/project" element={<Project />}>
           <Route index element={<ProjectA />} />
