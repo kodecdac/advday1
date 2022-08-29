@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import AboutUs from "./pages/Aboutus";
 import AppNavigation, { AppNavigationNavBar } from "./pages/AppNavigation";
+import GenericList from "./pages/GenericList";
 import GenericRegisterForm from "./pages/GenericRegisterForm";
 
 import Home from "./pages/Home";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/project" element={<Project />} />
         <Route path="/generic" element={<GenericRegisterForm />} />
+        <Route path="/generic-list" element={<GenericList />} />
       </Routes>
     </>
   );
