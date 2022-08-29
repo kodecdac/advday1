@@ -1,4 +1,10 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import AboutUs from "./pages/Aboutus";
 import AppNavigation, { AppNavigationNavBar } from "./pages/AppNavigation";
 import GenericRegisterForm from "./pages/GenericRegisterForm";
@@ -8,8 +14,10 @@ import Main from "./pages/Main";
 import Project from "./pages/Project";
 
 function App() {
+  const navigate = useNavigate();
+
   return (
-    <BrowserRouter>
+    <>
       <AppNavigationNavBar />
 
       <Routes>
@@ -19,7 +27,7 @@ function App() {
         <Route path="/project" element={<Project />} />
         <Route path="/generic" element={<GenericRegisterForm />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
