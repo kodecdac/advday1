@@ -22,6 +22,9 @@ function AppNavigationNavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
+            <Nav.Link to="/playground" as={Link}>
+              Playground
+            </Nav.Link>
             <Nav.Link to="/generic" as={Link}>
               Genric Form
             </Nav.Link>
