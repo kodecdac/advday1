@@ -2,13 +2,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { incrementAsync } from "../store/store";
 
+import Nav from "react-bootstrap/Nav";
+
 function Main() {
   return (
     <>
-      <nav>
-        <Link to="maina"> Main A</Link>
-        <Link to="mainb"> Main B</Link>
-      </nav>
+      <Nav className="justify-content-center">
+        <Nav.Item>
+          <Nav.Link as={Link} to="maina">
+            MainA
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link as={Link} to="mainb">
+            MainB
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+
       <Outlet />
     </>
   );
