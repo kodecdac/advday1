@@ -5,7 +5,7 @@ import GenericRegisterForm from "./pages/GenericRegisterForm";
 
 import Home from "./pages/Home";
 import Main from "./pages/Main";
-import Project from "./pages/Project";
+import Project, { ProjectA, ProjectB } from "./pages/Project";
 
 function App() {
   return (
@@ -13,11 +13,15 @@ function App() {
       <AppNavigationNavBar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="/main" element={<Main />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/project" element={<Project />} />
-        <Route path="/generic" element={<GenericRegisterForm />} />
+        <Route path="/project" element={<Project />}>
+          <Route index element={<ProjectA />} />
+          <Route path="projecta" element={<ProjectA />} />
+          <Route path="projectb" element={<ProjectB />} />
+        </Route>
+        <Route path="generic" element={<GenericRegisterForm />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 
 function Project() {
@@ -8,18 +9,21 @@ function Project() {
   };
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorPage} onError={handleError}>
-      <ProjectA />
-      <ProjectB />
-    </ErrorBoundary>
+    <>
+      <nav>
+        <Link to="projecta">Project A</Link>
+        <Link to="projectb">Project B</Link>
+      </nav>
+      <Outlet />
+    </>
   );
 }
 
-function ProjectA() {
+export function ProjectA() {
   const [project] = useState({});
   return (
     <div>
-      <h1>Project {project.name.toUpperCase()}</h1>
+      <h1>Project {}</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, temporibus?
         Fuga ipsa veniam distinctio neque sapiente eos vitae reprehenderit sequi
@@ -37,7 +41,7 @@ function ProjectA() {
   );
 }
 
-function ProjectB() {
+export function ProjectB() {
   return (
     <div>
       <h1>Project B</h1>
