@@ -12,6 +12,8 @@ function Playground7() {
   let [editOperation, setEditOperation] = useState(false);
   let [editIndex, setEditIndex] = useState();
 
+  let [displayToastMessage, setDisplayToastMesage] = useState(false);
+
   let [userList, setUserList] = useState([]);
 
   let [user, setUser] = useState({
@@ -34,6 +36,9 @@ function Playground7() {
       email: "",
       mobile: "",
     });
+
+    setDisplayToastMesage(true);
+    setTimeout(() => setDisplayToastMesage(false), 2000);
   };
 
   const handleEdit = (item, index) => {
@@ -53,6 +58,7 @@ function Playground7() {
       email: "",
       mobile: "",
     });
+    setDisplayToastMesage(false);
   };
 
   const handleUpdate = () => {
@@ -78,6 +84,9 @@ function Playground7() {
       email: "",
       mobile: "",
     });
+
+    setDisplayToastMesage(true);
+    setTimeout(() => setDisplayToastMesage(false), 2000);
   };
 
   const handleDelete = (item, index) => {
@@ -96,6 +105,7 @@ function Playground7() {
 
       <div>
         <input
+          className="form-control"
           type="text"
           placeholder="Enter username"
           name="username"
@@ -103,6 +113,7 @@ function Playground7() {
           onChange={handleInput}
         />
         <input
+          className="form-control"
           type="password"
           placeholder="Enter password"
           name="password"
@@ -110,6 +121,7 @@ function Playground7() {
           onChange={handleInput}
         />
         <input
+          className="form-control"
           type="email"
           placeholder="Enter Email"
           name="email"
@@ -117,6 +129,7 @@ function Playground7() {
           onChange={handleInput}
         />
         <input
+          className="form-control"
           type="mobile"
           placeholder="Enter Mobile"
           name="mobile"
@@ -126,16 +139,41 @@ function Playground7() {
 
         {editOperation ? (
           <>
-            <input type="button" value="Update" onClick={handleUpdate} />
-            <input type="button" value="Cancel" onClick={resetOperation} />
+            <input
+              className="btn btn-primary"
+              type="button"
+              value="Update"
+              onClick={handleUpdate}
+            />
+            <input
+              className="btn btn-secondary"
+              type="button"
+              value="Cancel"
+              onClick={resetOperation}
+            />
           </>
         ) : (
           <>
-            <input type="button" value="Submit" onClick={handleInsert} />
-            <input type="button" value="Reset" onClick={resetOperation} />
+            <input
+              className="btn btn-primary"
+              type="button"
+              value="Submit"
+              onClick={handleInsert}
+            />
+            <input
+              className="btn btn-secondary"
+              type="button"
+              value="Reset"
+              onClick={resetOperation}
+            />
           </>
         )}
       </div>
+
+      {/** THIS COPONSENT CONDITIONAL */}
+      {displayToastMessage && (
+        <div className="alert alert-success">User Operation Success!</div>
+      )}
 
       <div>
         <table className="table">
