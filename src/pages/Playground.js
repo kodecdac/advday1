@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 function Playground() {
   return (
@@ -14,8 +15,10 @@ function Playground7() {
 
   let [displayToastMessage, setDisplayToastMesage] = useState(false);
 
-  let [userList, setUserList] = useState([]);
+  let [displayModal, setDisplayModal] = useState(false);
+  let [modalItem, setModalitem] = useState();
 
+  let [userList, setUserList] = useState([]);
   let [user, setUser] = useState({
     username: "",
     password: "",
@@ -97,6 +100,15 @@ function Playground7() {
     });
 
     setUserList([...list1]);
+  };
+
+  const handleModal = (item) => {
+    setDisplayModal(true);
+    setModalitem(item);
+  };
+
+  const handleModalClose = () => {
+    setDisplayModal(false);
   };
 
   return (
@@ -196,7 +208,12 @@ function Playground7() {
                 <td>{item.email}</td>
                 <td>{item.mobile}</td>
                 <td>
-                  <input className="btn btn-link" type="button" value="View" />{" "}
+                  <input
+                    className="btn btn-link"
+                    type="button"
+                    value="View"
+                    onClick={() => handleModal(item)}
+                  />
                   /
                   <input
                     className="btn btn-link"
@@ -217,6 +234,30 @@ function Playground7() {
           </tbody>
         </table>
       </div>
+
+      <Modal
+        show={displayModal}
+        onHide={handleModalClose}
+        size="lg"
+        centered={true}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Row Item</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <h1>Username - {modalItem?.username}</h1>
+          <h1>Pasword - ******</h1>
+          <h1>Email - {modalItem?.email}</h1>
+          <h1>Mobile - {modalItem?.mobile}</h1>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleModalClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
