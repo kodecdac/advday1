@@ -125,15 +125,6 @@ function Playground7() {
             ))}
           </tbody>
         </table>
-
-        {/** LIST FORM */}
-        <ul>
-          {userList.map((item) => (
-            <li>
-              {item.username} / {"****"} / {item.email} / {item.mobile}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
