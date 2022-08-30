@@ -9,6 +9,9 @@ function Playground() {
 }
 
 function Playground7() {
+  let [editOperation, setEditOperation] = useState(false);
+  let [editIndex, setEditIndex] = useState();
+
   let [userList, setUserList] = useState([]);
 
   let [user, setUser] = useState({
@@ -22,7 +25,7 @@ function Playground7() {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSumit = () => {
+  const handleInsert = () => {
     let list1 = [user, ...userList]; // cloning.
     setUserList(list1);
     setUser({
@@ -35,7 +38,46 @@ function Playground7() {
 
   const handleEdit = (item, index) => {
     console.log("Handle Edit", item);
+
+    setEditOperation(true);
+    setEditIndex(index);
     setUser(item);
+  };
+
+  const resetOperation = () => {
+    setEditOperation(false);
+    setEditIndex();
+    setUser({
+      username: "",
+      password: "",
+      email: "",
+      mobile: "",
+    });
+  };
+
+  const handleUpdate = () => {
+    // user has the latest value
+    console.log(user);
+
+    // Perform the update operation on List
+    let listItem = userList[editIndex];
+    listItem.username = user.username;
+    listItem.password = user.password;
+    listItem.email = user.email;
+    listItem.mobile = user.mobile;
+
+    // Update the UI
+    setUserList([...userList]);
+
+    // After Update
+    setEditOperation(false);
+    setEditIndex();
+    setUser({
+      username: "",
+      password: "",
+      email: "",
+      mobile: "",
+    });
   };
 
   const handleDelete = (item, index) => {
@@ -50,7 +92,7 @@ function Playground7() {
 
   return (
     <div>
-      <h1>Playground 7 / EDIT OPERATIONS </h1>
+      <h1>Basic Form </h1>
 
       <div>
         <input
@@ -81,7 +123,18 @@ function Playground7() {
           value={user.mobile}
           onChange={handleInput}
         />
-        <input type="button" value="Submit" onClick={handleSumit} />
+
+        {editOperation ? (
+          <>
+            <input type="button" value="Update" onClick={handleUpdate} />
+            <input type="button" value="Cancel" onClick={resetOperation} />
+          </>
+        ) : (
+          <>
+            <input type="button" value="Submit" onClick={handleInsert} />
+            <input type="button" value="Reset" onClick={resetOperation} />
+          </>
+        )}
       </div>
 
       <div>
