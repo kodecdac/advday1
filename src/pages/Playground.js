@@ -1,45 +1,25 @@
 import { useState } from "react";
 
 function Playground() {
+  let [username, setUsername] = useState("rajiv");
+  let [user, setUser] = useState({ id: 1, email: "adf@asdf.com" });
+  let [list, setList] = useState([]);
+
   return (
     <div>
-      <WithdrawCounter1 />
-      <hr />
-      <WithdrawCounter2 />
+      <HelloUser />
+      <HelloUser username="rohit" user={{}} list={[]} />
+      <HelloUser username={username} user={user} list={list} />
     </div>
   );
 }
 
-function WithdrawCounter1() {
-  // STATE
-  let [balance, setBalance] = useState(100);
-
-  // SAME LOGIC
-  const deposit = () => {
-    setBalance(balance + 100);
-  };
-
+// TO ACCEPT PARAMETER ::
+function HelloUser(props) {
   return (
     <div>
-      <h1>Counter1 - {balance}</h1>
-      <input type="button" value="Operation" onClick={deposit} />
-    </div>
-  );
-}
-
-function WithdrawCounter2() {
-  // STATE
-  let [balance, setBalance] = useState(100);
-
-  // SAME LOGIC
-  const deposit = () => {
-    setBalance(balance + 100);
-  };
-
-  return (
-    <div>
-      <h1>Counter2 - {balance}</h1>
-      <input type="button" value="Operation" onClick={deposit} />
+      <h1>Hello, {props.username}!</h1>
+      <p>{JSON.stringify(props)}</p>
     </div>
   );
 }
