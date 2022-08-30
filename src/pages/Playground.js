@@ -1,27 +1,45 @@
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
 
 function Playground() {
   return (
     <div>
-      <Playground1 />
-      <Playground2 />
+      <WithdrawCounter1 />
+      <hr />
+      <WithdrawCounter2 />
     </div>
   );
 }
 
-function Playground1() {
+function WithdrawCounter1() {
+  // STATE
+  let [balance, setBalance] = useState(100);
+
+  // SAME LOGIC
+  const deposit = () => {
+    setBalance(balance + 100);
+  };
+
   return (
     <div>
-      <h1>P1 </h1>
+      <h1>Counter1 - {balance}</h1>
+      <input type="button" value="Operation" onClick={deposit} />
     </div>
   );
 }
 
-function Playground2() {
+function WithdrawCounter2() {
+  // STATE
+  let [balance, setBalance] = useState(100);
+
+  // SAME LOGIC
+  const deposit = () => {
+    setBalance(balance + 100);
+  };
+
   return (
     <div>
-      <h1>P2 </h1>
+      <h1>Counter2 - {balance}</h1>
+      <input type="button" value="Operation" onClick={deposit} />
     </div>
   );
 }
