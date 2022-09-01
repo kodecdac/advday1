@@ -1,38 +1,45 @@
-import {
-  BrowserRouter,
-  Link,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
-import AboutUs from "./pages/Aboutus";
-import AppNavigation, { AppNavigationNavBar } from "./pages/AppNavigation";
-import GenericList from "./pages/GenericList";
-import GenericRegisterForm from "./pages/GenericRegisterForm";
-
-import Home from "./pages/Home";
-import Main from "./pages/Main";
-import Project from "./pages/Project";
-import Playground from "./pages/Playground";
+import { NavLink, Route, Routes } from "react-router-dom";
 
 function App() {
-  const navigate = useNavigate();
-
   return (
     <>
-      <AppNavigationNavBar />
+      <AppNavigation />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/project" element={<Project />} />
-        <Route path="/playground" element={<Playground />} />
-        <Route path="/generic" element={<GenericRegisterForm />} />
-        <Route path="/generic-list" element={<GenericList />} />
+        <Route index path="/" element={<h1>Page1</h1>} />
+        <Route path="/page1" element={<h1>Page1</h1>} />
+        <Route path="/page2" element={<h1>Page2</h1>} />
+        <Route path="/page3" element={<h1>Page3</h1>} />
       </Routes>
     </>
   );
 }
+
+const AppNavigation = () => {
+  const activeStyle = { background: "red", color: "white" };
+
+  return (
+    <>
+      <NavLink
+        to="/page1"
+        style={({ isActive }) => (isActive ? activeStyle : null)}
+      >
+        Page 1 |
+      </NavLink>
+      <NavLink
+        to="/page2"
+        style={({ isActive }) => (isActive ? activeStyle : null)}
+      >
+        Page 2 |{" "}
+      </NavLink>
+      <NavLink
+        to="/page3"
+        style={({ isActive }) => (isActive ? activeStyle : null)}
+      >
+        Page 3 |{" "}
+      </NavLink>
+    </>
+  );
+};
 
 export default App;
