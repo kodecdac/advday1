@@ -8,6 +8,7 @@ import {
   useLocation,
   useNavigate,
   useOutletContext,
+  useParams,
 } from "react-router-dom";
 
 function App() {
@@ -33,12 +34,27 @@ function App() {
                 </NavLink>
               </nav>
               <main>
+                <ul>
+                  <li>
+                    <Link to="/projects/1" state={{}}>
+                      Project 1
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/projects/2" state={{}}>
+                      Project 2
+                    </Link>
+                  </li>
+                </ul>
+              </main>
+              <main>
                 <Outlet context={{ title: "outlet context" }} />
               </main>
             </>
           }
         >
           <Route index element={<main>Project Dashboard</main>} />
+          <Route path=":id" element={<ProjectId />} />
           <Route path="dashboard" element={<ProjectDashboard />} />
           <Route path="billing" element={<ProjectBilling />} />
         </Route>
@@ -139,6 +155,21 @@ const ProjectBilling = () => {
   return (
     <main>
       <h1>Project Billing</h1>
+      <article>{JSON.stringify(location.state)}</article>
+      <article>{JSON.stringify(outletContext)}</article>
+    </main>
+  );
+};
+
+const ProjectId = () => {
+  const params = useParams();
+  const location = useLocation();
+  let outletContext = useOutletContext();
+
+  return (
+    <main>
+      <h1>Project Id</h1>
+      <article>{JSON.stringify(params)}</article>
       <article>{JSON.stringify(location.state)}</article>
       <article>{JSON.stringify(outletContext)}</article>
     </main>
