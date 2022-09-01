@@ -13,11 +13,11 @@ function App() {
     <>
       <AppNavigation />
       <Routes>
-        <Route path="/" element={<main>Page1</main>} />
-        <Route path="/page1" element={<main>Page1</main>} />
-        <Route path="/page2" element={<main>Page2</main>} />
-        <Route path="/page3" element={<main>Page3</main>} />
-        <Route path="/page4" element={<main>Page4</main>} />
+        <Route path="/" element={<Page1 />} />
+        <Route path="/page1" element={<Page1 />} />
+        <Route path="/page2" element={<Page2 />} />
+        <Route path="/page3" element={<Page3 />} />
+        <Route path="/page4" element={<Page4 />} />
         <Route
           path="/projects"
           element={
@@ -27,17 +27,14 @@ function App() {
                 <NavLink to="/projects/billing">Billing</NavLink>
               </nav>
               <main>
-                <section>Project Info</section>
-                <section>
-                  <Outlet />
-                </section>
+                <Outlet />
               </main>
             </>
           }
         >
           <Route index element={<main>Project Dashboard</main>} />
-          <Route path="dashboard" element={<main>Project Dashboard</main>} />
-          <Route path="billing" element={<main>Project Billing</main>} />
+          <Route path="dashboard" element={<ProjectDashboard />} />
+          <Route path="billing" element={<ProjectBilling />} />
         </Route>
       </Routes>
     </>
@@ -52,26 +49,55 @@ const AppNavigation = () => {
       <NavLink to="/page3">Page3 |</NavLink>
       <NavLink to="/page4">Page4 |</NavLink>
       <NavLink to="/projects">Projects |</NavLink>
-      <NavLink to="/projects/dashboard">Project Dashboard |</NavLink>
-      <NavLink to="/projects/billing">Project Billing</NavLink>
     </>
   );
 };
 
-const AppNavigationNavigate = () => {
-  let navigate = useNavigate();
-
-  const go2page = (page) => {
-    navigate(`/${page}`, { replace: true });
-  };
-
+const Page1 = () => {
   return (
-    <>
-      <input type="button" value="Page1" onClick={() => go2page("page1")} />
-      <input type="button" value="Page2" onClick={() => go2page("page2")} />
-      <input type="button" value="Page3" onClick={() => go2page("page3")} />
-      <input type="button" value="Page4" onClick={() => go2page("page4")} />
-    </>
+    <main>
+      <h1>Page1</h1>
+    </main>
+  );
+};
+
+const Page2 = () => {
+  return (
+    <main>
+      <h1>Page2</h1>
+    </main>
+  );
+};
+
+const Page3 = () => {
+  return (
+    <main>
+      <h1>Page3</h1>
+    </main>
+  );
+};
+
+const Page4 = () => {
+  return (
+    <main>
+      <h1>Page4</h1>
+    </main>
+  );
+};
+
+const ProjectDashboard = () => {
+  return (
+    <main>
+      <h1>Project Dashboard</h1>
+    </main>
+  );
+};
+
+const ProjectBilling = () => {
+  return (
+    <main>
+      <h1>Project Billing</h1>
+    </main>
   );
 };
 
