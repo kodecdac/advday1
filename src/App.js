@@ -1,12 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Navigate,
-  NavLink,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
-import { login, logout } from "./store/store";
+import { Navigate, NavLink, Route, Routes } from "react-router-dom";
+import { asyncLogout, login, logout, makeApiCall } from "./store/store";
 
 function App() {
   return (
@@ -79,15 +73,36 @@ const Page2 = () => {
 };
 
 const Page3 = () => {
+  let state = useSelector((state) => state);
   const dispatch = useDispatch();
   const click2Logout = () => {
     dispatch(logout());
+  };
+
+  const click2AsyncLogout = () => {
+    dispatch(asyncLogout());
+  };
+
+  const click2MakeApiCall = () => {
+    dispatch(makeApiCall());
   };
 
   return (
     <>
       <h1>Page3</h1>
       <input type="button" value="Click2Logout" onClick={click2Logout} />
+      <input
+        type="button"
+        value="Click2AsyncLogout"
+        onClick={click2AsyncLogout}
+      />
+      <input
+        type="button"
+        value="Click2MakeApiCall"
+        onClick={click2MakeApiCall}
+      />
+
+      {JSON.stringify(state.datastore)}
     </>
   );
 };
