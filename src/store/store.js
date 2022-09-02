@@ -13,11 +13,21 @@ const firstSlice = createSlice({
 //--- Second Slice - Store - Reducer
 const secondSlice = createSlice({
   name: "secondStore",
+
+  // DATA MEMBERS
   initialState: {
     counter: 100,
   },
-  reducers: {},
+
+  // MEMBER FUNCTIONS :: ACTIONS
+  reducers: {
+    incrmentCounter: (state) => {
+      state.counter += 100;
+    },
+  },
 });
+
+export const { incrmentCounter } = secondSlice.actions;
 
 // this will give us STORE / GLOBAL STATE
 export default configureStore({
