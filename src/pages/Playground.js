@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemIntoList,
+  addItemIntoListWithPayload,
   incrmentCounter,
   incrmentCounterByPayload,
 } from "../store/store";
@@ -34,6 +35,11 @@ function PlaygroundA() {
   let state = useSelector((state) => state);
   let { secondStore } = useSelector((state) => state);
 
+  let [message, setMessage] = useState("");
+  let handleInputChange = (e) => {
+    setMessage(e.target.value);
+  };
+
   return (
     <>
       <h1>Hello A</h1>
@@ -47,6 +53,18 @@ function PlaygroundA() {
 
       {/** WORKIGN WITH STORE LIST */}
       <h1>List</h1>
+      <input
+        type="text"
+        placeholder="Enter Text"
+        value={message}
+        onChange={handleInputChange}
+      />
+      <input
+        type="button"
+        value="Add item To List with Payload"
+        onClick={() => dispatch(addItemIntoListWithPayload(message))}
+      />
+
       <input
         type="button"
         value="Add item To List"
