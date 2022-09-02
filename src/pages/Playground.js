@@ -48,15 +48,27 @@ function PlaygroundB() {
   let { firstStore } = useSelector((state) => state);
   let { secondStore } = useSelector((state) => state);
 
+  // Component State
+  let [userCountInput, setUserInput] = useState(1);
+  let handleInputChange = (e) => {
+    setUserInput(Number(e.target.value));
+  };
+
   return (
     <>
       <h1>Hello B</h1>
       <h1>{firstStore?.message}</h1>
       <h1>{secondStore?.counter}</h1>
       <input
+        type="number"
+        placeholder="Enter Count"
+        value={userCountInput}
+        onChange={handleInputChange}
+      />
+      <input
         type="button"
         value="Incrment"
-        onClick={() => dispatch(incrmentCounterByPayload(50))}
+        onClick={() => dispatch(incrmentCounterByPayload(userCountInput))}
       />
     </>
   );
