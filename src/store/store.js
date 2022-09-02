@@ -20,14 +20,20 @@ const secondSlice = createSlice({
   },
 
   // MEMBER FUNCTIONS :: ACTIONS
+  // REDUCER => SPL FUNCTION with TWO PARAM => STATE, ACTION
+  // ACTION => TYPE, PAYLOAD
   reducers: {
     incrmentCounter: (state) => {
       state.counter += 100;
     },
+    incrmentCounterByPayload: (state, action) => {
+      state.counter += action.payload;
+    },
   },
 });
 
-export const { incrmentCounter } = secondSlice.actions;
+export const { incrmentCounter, incrmentCounterByPayload } =
+  secondSlice.actions;
 
 // this will give us STORE / GLOBAL STATE
 export default configureStore({

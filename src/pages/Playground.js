@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { incrmentCounter } from "../store/store";
+import { incrmentCounter, incrmentCounterByPayload } from "../store/store";
 
 function Playground() {
   let dispatch = useDispatch();
@@ -37,7 +37,7 @@ function PlaygroundA() {
       <input
         type="button"
         value="Incrment"
-        onClick={() => dispatch(incrmentCounter())}
+        onClick={() => dispatch(incrmentCounterByPayload(10))}
       />
     </>
   );
@@ -56,7 +56,7 @@ function PlaygroundB() {
       <input
         type="button"
         value="Incrment"
-        onClick={() => dispatch(incrmentCounter)}
+        onClick={() => dispatch(incrmentCounterByPayload(50))}
       />
     </>
   );
