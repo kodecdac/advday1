@@ -1,26 +1,40 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Playground() {
-  let [username, setUsername] = useState("rajiv abcd");
-  let [user, setUser] = useState({ id: 1, email: "adf@asdf.com" });
-  let [list, setList] = useState([]);
+  let globalState = useSelector((globalState) => globalState);
 
   return (
     <div>
-      <HelloUser />
-      <HelloUser username="rohit" user={{}} list={[]} />
-      <HelloUser username={username} user={user} list={list} />
+      <h1>{globalState.firstStore?.message}</h1>
+
+      <hr />
+      <PlaygroundB />
+      <hr />
+      <PlaygroundA />
+      <hr />
     </div>
   );
 }
 
-// TO ACCEPT PARAMETER ::
-function HelloUser(props) {
+function PlaygroundA() {
+  let state = useSelector((state) => state);
+
   return (
-    <div>
-      <h1>Hello, {props.username}!</h1>
-      <p>{JSON.stringify(props)}</p>
-    </div>
+    <>
+      <h1>Hello A</h1>
+      <h1>{state.firstStore?.message}</h1>
+    </>
+  );
+}
+
+function PlaygroundB() {
+  let { firstStore } = useSelector((state) => state);
+
+  return (
+    <>
+      <h1>Hello B</h1>
+      <h1>{firstStore?.message}</h1>
+    </>
   );
 }
 
