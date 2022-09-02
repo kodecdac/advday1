@@ -26,6 +26,7 @@ function Playground() {
 }
 
 function PlaygroundA() {
+  let dispatch = useDispatch();
   let state = useSelector((state) => state);
 
   return (
@@ -33,12 +34,17 @@ function PlaygroundA() {
       <h1>Hello A</h1>
       <h1>{state.firstStore?.message}</h1>
       <h1>{state.secondStore?.counter}</h1>
-      <input type="button" value="Incrment" />
+      <input
+        type="button"
+        value="Incrment"
+        onClick={() => dispatch(incrmentCounter())}
+      />
     </>
   );
 }
 
 function PlaygroundB() {
+  let dispatch = useDispatch();
   let { firstStore } = useSelector((state) => state);
   let { secondStore } = useSelector((state) => state);
 
@@ -47,7 +53,11 @@ function PlaygroundB() {
       <h1>Hello B</h1>
       <h1>{firstStore?.message}</h1>
       <h1>{secondStore?.counter}</h1>
-      <input type="button" value="Incrment" />
+      <input
+        type="button"
+        value="Incrment"
+        onClick={() => dispatch(incrmentCounter)}
+      />
     </>
   );
 }
