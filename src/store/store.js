@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+//--- First Slice - Store - Reducer
 const firstSlice = createSlice({
   name: "firstStore",
   initialState: {
@@ -9,9 +10,16 @@ const firstSlice = createSlice({
   reducers: {},
 });
 
-const firstStoreReducer = firstSlice.reducer;
+//--- Second Slice - Store - Reducer
+const secondSlice = createSlice({
+  name: "secondStore",
+  initialState: {
+    counter: 100,
+  },
+  reducers: {},
+});
 
 // this will give us STORE / GLOBAL STATE
 export default configureStore({
-  reducer: { firstStore: firstStoreReducer },
+  reducer: { firstStore: firstSlice.reducer, secondStore: secondSlice.reducer },
 });

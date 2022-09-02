@@ -12,6 +12,7 @@ function Playground() {
       <hr />
       <PlaygroundA />
       <hr />
+      <p>{JSON.stringify(globalState)}</p>
     </div>
   );
 }
@@ -23,17 +24,20 @@ function PlaygroundA() {
     <>
       <h1>Hello A</h1>
       <h1>{state.firstStore?.message}</h1>
+      <h1>{state.secondStore?.counter}</h1>
     </>
   );
 }
 
 function PlaygroundB() {
   let { firstStore } = useSelector((state) => state);
+  let { secondStore } = useSelector((state) => state);
 
   return (
     <>
       <h1>Hello B</h1>
       <h1>{firstStore?.message}</h1>
+      <h1>{secondStore?.counter}</h1>
     </>
   );
 }
