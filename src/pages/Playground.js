@@ -5,7 +5,7 @@ import {
   addItemIntoListWithPayload,
   incrmentCounter,
   incrmentCounterByPayload,
-} from "../store/store";
+} from "../store/secondslice";
 
 function Playground() {
   let dispatch = useDispatch();
