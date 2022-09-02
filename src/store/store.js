@@ -17,6 +17,7 @@ const secondSlice = createSlice({
   // DATA MEMBERS
   initialState: {
     counter: 100,
+    list: ["delhi", "calcutta"],
   },
 
   // MEMBER FUNCTIONS :: ACTIONS
@@ -29,10 +30,13 @@ const secondSlice = createSlice({
     incrmentCounterByPayload: (state, action) => {
       state.counter += action.payload;
     },
+    addItemIntoList: (state) => {
+      state.list.unshift("mumbai");
+    },
   },
 });
 
-export const { incrmentCounter, incrmentCounterByPayload } =
+export const { incrmentCounter, incrmentCounterByPayload, addItemIntoList } =
   secondSlice.actions;
 
 // this will give us STORE / GLOBAL STATE

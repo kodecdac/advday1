@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { incrmentCounter, incrmentCounterByPayload } from "../store/store";
+import {
+  addItemIntoList,
+  incrmentCounter,
+  incrmentCounterByPayload,
+} from "../store/store";
 
 function Playground() {
   let dispatch = useDispatch();
@@ -28,6 +32,7 @@ function Playground() {
 function PlaygroundA() {
   let dispatch = useDispatch();
   let state = useSelector((state) => state);
+  let { secondStore } = useSelector((state) => state);
 
   return (
     <>
@@ -39,6 +44,19 @@ function PlaygroundA() {
         value="Incrment"
         onClick={() => dispatch(incrmentCounterByPayload(10))}
       />
+
+      {/** WORKIGN WITH STORE LIST */}
+      <h1>List</h1>
+      <input
+        type="button"
+        value="Add item To List"
+        onClick={() => dispatch(addItemIntoList())}
+      />
+      <ul>
+        {secondStore?.list.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </>
   );
 }
@@ -70,6 +88,14 @@ function PlaygroundB() {
         value="Incrment"
         onClick={() => dispatch(incrmentCounterByPayload(userCountInput))}
       />
+
+      {/** WORKIGN WITH STORE LIST */}
+      <h1>List</h1>
+      <ul>
+        {secondStore?.list.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </>
   );
 }
