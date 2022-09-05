@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addGenericItem } from "../store/genericslice";
 
 function GenericRegisterForm() {
   let dispatch = useDispatch();
+  let { genericStore } = useSelector((state) => state);
 
   let [user, setUser] = useState({
     username: "",
@@ -14,7 +15,6 @@ function GenericRegisterForm() {
 
   let handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   let addGenericUser = () => {
@@ -75,6 +75,12 @@ function GenericRegisterForm() {
           onClick={addGenericUser}
           className="btn btn-lg btn-secondary w-100"
         />
+
+        {genericStore.displayToast && (
+          <div className="alert alert-success mt-2">
+            User Added Successfully
+          </div>
+        )}
       </div>
     </div>
   );
