@@ -7,6 +7,9 @@ const genericSlice = createSlice({
     editUserRef: undefined,
     editUserIndex: -1,
 
+    displayModal: false,
+    displayModalItem: undefined,
+
     displayToast: false,
     genericList: [],
   },
@@ -46,6 +49,14 @@ const genericSlice = createSlice({
     hideDispalyToast: (state) => {
       state.displayToast = false;
     },
+
+    displayModalAction: (state, action) => {
+      state.displayModal = true;
+      state.displayModalItem = action.payload;
+    },
+    hideModalAction: (state) => {
+      state.displayModal = false;
+    },
   },
 });
 
@@ -55,5 +66,7 @@ export const {
   deleteGenericItem,
   ediUserRefAction,
   updateGenericItem,
+  displayModalAction,
+  hideModalAction,
 } = genericSlice.actions;
 export default genericSlice.reducer;
