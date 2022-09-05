@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { addGenericItem, updateGenericItem } from "../store/genericslice";
+import {
+  addGenericItem,
+  addGenericItemAsync,
+  updateGenericItem,
+} from "../store/genericslice";
 
 function GenericRegisterForm() {
   let dispatch = useDispatch();
@@ -25,7 +29,7 @@ function GenericRegisterForm() {
   let addGenericUser = () => {
     // VALIDATIONS
     // REDUX DISPATCH
-    dispatch(addGenericItem(user));
+    dispatch(addGenericItemAsync(user));
 
     setUser({
       username: "",

@@ -21,7 +21,7 @@ const genericSlice = createSlice({
         state.genericList.unshift(action.payload);
 
         // success toast
-        // state.displayToast = true;
+        state.displayToast = true;
       } catch (err) {
         console.error(err);
       }
@@ -59,6 +59,16 @@ const genericSlice = createSlice({
     },
   },
 });
+
+export const addGenericItemAsync = (payload) => {
+  return async (dispatch) => {
+    dispatch(addGenericItem(payload));
+
+    setTimeout(() => {
+      dispatch(hideDispalyToast());
+    }, 1000);
+  };
+};
 
 export const {
   addGenericItem,
