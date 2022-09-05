@@ -15,10 +15,15 @@ const genericSlice = createSlice({
         state.genericList.unshift(action.payload);
 
         // success toast
-        state.displayToast = true;
+        // state.displayToast = true;
       } catch (err) {
         console.error(err);
       }
+    },
+
+    deleteGenericItem: (state, action) => {
+      console.log("About to Delete");
+      state.genericList.splice(action.payload.index, 1);
     },
 
     hideDispalyToast: (state) => {
@@ -27,5 +32,6 @@ const genericSlice = createSlice({
   },
 });
 
-export const { addGenericItem, hideDispalyToast } = genericSlice.actions;
+export const { addGenericItem, hideDispalyToast, deleteGenericItem } =
+  genericSlice.actions;
 export default genericSlice.reducer;
