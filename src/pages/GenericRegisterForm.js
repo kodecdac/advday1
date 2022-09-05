@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addGenericItem } from "../store/genericslice";
+import { useSearchParams } from "react-router-dom";
+import { addGenericItem, updateGenericItem } from "../store/genericslice";
 
 function GenericRegisterForm() {
   let dispatch = useDispatch();
+
+  let [searchParams] = useSearchParams();
+  let isEditOperation = searchParams.get("edit");
+
   let { genericStore } = useSelector((state) => state);
 
   let [user, setUser] = useState({
-    username: "",
-    password: "",
-    email: "",
-    mobile: "",
+    username: isEditOperation ? genericStore.editUserRef?.username : "",
+    password: isEditOperation ? genericStore.editUserRef?.password : "",
+    email: isEditOperation ? genericStore.editUserRef?.email : "",
+    mobile: isEditOperation ? genericStore.editUserRef?.mobile : "",
   });
 
   let handleInputChange = (e) => {
@@ -21,6 +26,17 @@ function GenericRegisterForm() {
     // VALIDATIONS
     // REDUX DISPATCH
     dispatch(addGenericItem(user));
+
+    setUser({
+      username: "",
+      password: "",
+      email: "",
+      mobile: "",
+    });
+  };
+
+  let updateGenericUser = () => {
+    dispatch(updateGenericItem(user));
 
     setUser({
       username: "",
@@ -69,12 +85,21 @@ function GenericRegisterForm() {
           onChange={handleInputChange}
         />
 
-        <input
-          type="button"
-          value="Add User"
-          onClick={addGenericUser}
-          className="btn btn-lg btn-secondary w-100"
-        />
+        {isEditOperation ? (
+          <input
+            type="button"
+            value="Update User"
+            onClick={updateGenericUser}
+            className="btn btn-lg btn-secondary w-100"
+          />
+        ) : (
+          <input
+            type="button"
+            value="Add User"
+            onClick={addGenericUser}
+            className="btn btn-lg btn-secondary w-100"
+          />
+        )}
 
         {genericStore.displayToast && (
           <div className="alert alert-success mt-2">

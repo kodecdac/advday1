@@ -1,9 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteGenericItem } from "../store/genericslice";
+import { useNavigate } from "react-router-dom";
+import { deleteGenericItem, ediUserRefAction } from "../store/genericslice";
 
 function GenericList() {
   let dispatch = useDispatch();
+  let navigate = useNavigate();
+
   let { genericStore } = useSelector((state) => state);
+
+  const editGenericItem = (item, index) => {
+    dispatch(ediUserRefAction({ item, index }));
+
+    navigate("/generic?edit=1");
+  };
 
   return (
     <div className="row justify-content-center">
@@ -30,7 +39,12 @@ function GenericList() {
                 <td>
                   <input className="btn btn-link" type="button" value="View" />{" "}
                   /
-                  <input className="btn btn-link" type="button" value="Edit" />
+                  <input
+                    className="btn btn-link"
+                    type="button"
+                    value="Edit"
+                    onClick={() => editGenericItem(item, index)}
+                  />
                   /
                   <input
                     className="btn btn-link"
