@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getPostsApiCallAction,
@@ -32,15 +33,13 @@ function PlaygrounApi() {
   let dispatch = useDispatch();
   let { asyncStore } = useSelector((state) => state);
 
+  useEffect(() => {
+    dispatch(getPostsApiCallAction());
+  }, []);
+
   return (
     <div>
       <h1>API DEMO</h1>
-
-      <input
-        type="button"
-        value="Make Api Call"
-        onClick={() => dispatch(getPostsApiCallAction())}
-      />
 
       {asyncStore.postList.map((item) => (
         <div key={item.id} className="alert alert-primary">
