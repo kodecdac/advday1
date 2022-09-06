@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
 
 const asyncSlice = createSlice({
@@ -6,12 +7,17 @@ const asyncSlice = createSlice({
   // Data Member
   initialState: {
     counter: 0,
+    postList: [],
   },
 
   // Mmeber Function :: Sync Functions
   reducers: {
     incrementCounter: (state, action) => {
       state.counter += 100;
+    },
+
+    updatePostList: (state, action) => {
+      state.postList = action.payload;
     },
   },
 });
@@ -24,5 +30,14 @@ export const incrementCounterAsync = () => {
   };
 };
 
-export const { incrementCounter } = asyncSlice.actions;
+export const getPostsApiCallAction = () => {
+  return async (dispatch) => {
+    const url = `https://jsonplaceholder.typicode.com/posts`;
+    const response = await axios.get(url);
+
+    dispatch(updatePostList(response.data));
+  };
+};
+
+export const { incrementCounter, updatePostList } = asyncSlice.actions;
 export default asyncSlice.reducer;

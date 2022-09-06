@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { incrementCounter, incrementCounterAsync } from "../store/asyncslice";
+import {
+  getPostsApiCallAction,
+  incrementCounter,
+  incrementCounterAsync,
+} from "../store/asyncslice";
 
 function Playground() {
   let dispatch = useDispatch();
@@ -7,6 +11,9 @@ function Playground() {
 
   return (
     <div>
+      <PlaygrounApi />
+      <hr />
+
       <h1>Main Playground</h1>
       <h1>Counter {asyncStore?.counter}</h1>
       <input
@@ -17,6 +24,29 @@ function Playground() {
 
       <hr />
       <PlaygroundA />
+    </div>
+  );
+}
+
+function PlaygrounApi() {
+  let dispatch = useDispatch();
+  let { asyncStore } = useSelector((state) => state);
+
+  return (
+    <div>
+      <h1>API DEMO</h1>
+
+      <input
+        type="button"
+        value="Make Api Call"
+        onClick={() => dispatch(getPostsApiCallAction())}
+      />
+
+      {asyncStore.postList.map((item) => (
+        <div key={item.id} className="alert alert-primary">
+          {item.id} {item.body}
+        </div>
+      ))}
     </div>
   );
 }
