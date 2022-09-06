@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
 
 const genericSlice = createSlice({
@@ -15,6 +16,10 @@ const genericSlice = createSlice({
   },
 
   reducers: {
+    updateGenericListAction: (state, action) => {
+      state.genericList = action.payload;
+    },
+
     addGenericItem: (state, action) => {
       try {
         // logic...
@@ -60,7 +65,17 @@ const genericSlice = createSlice({
   },
 });
 
+export const makeUserListApiAction = () => {
+  return async (dispatch) => {
+    const url = `http://localhost:8080/user/`;
+    const response = await axios.get(url);
+
+    dispatch(updateGenericListAction(response.data));
+  };
+};
+
 export const {
+  updateGenericListAction,
   addGenericItem,
   hideDispalyToast,
   deleteGenericItem,

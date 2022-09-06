@@ -1,15 +1,21 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   deleteGenericItem,
   displayModalAction,
   ediUserRefAction,
+  makeUserListApiAction,
 } from "../store/genericslice";
 import GenericModal from "./GenericModal";
 
 function GenericList() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(makeUserListApiAction());
+  }, []);
 
   let { genericStore } = useSelector((state) => state);
 
