@@ -71,6 +71,7 @@ export const addUserApiAction = (user, setUser) => {
     try {
       const url = `http://localhost:8080/user/`;
       const response = await axios.post(url, user);
+      console.log(response);
 
       // Clean only in case of success
       setUser({
