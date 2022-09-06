@@ -89,6 +89,16 @@ export const addUserApiAction = (user, setUser) => {
   };
 };
 
+export const deleteUserApiAction = (item, index) => {
+  return async (dispatch) => {
+    const url = `http://localhost:8080/user/${item.id}`;
+    await axios.delete(url);
+
+    // dispatch(deleteGenericItem({ item, index }));
+    dispatch(makeUserListApiAction());
+  };
+};
+
 export const {
   updateGenericListAction,
   toggleDispalyToast,

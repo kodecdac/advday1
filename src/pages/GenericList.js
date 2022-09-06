@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   deleteGenericItem,
+  deleteUserApiAction,
   displayModalAction,
   ediUserRefAction,
   makeUserListApiAction,
@@ -67,9 +68,7 @@ function GenericList() {
                       className="btn btn-link"
                       type="button"
                       value="Del"
-                      onClick={() =>
-                        dispatch(deleteGenericItem({ item, index }))
-                      }
+                      onClick={() => dispatch(deleteUserApiAction(item, index))}
                     />
                   </td>
                 </tr>
