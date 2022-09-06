@@ -62,6 +62,7 @@ export const makeUserListApiAction = () => {
     const url = `http://localhost:8080/user/`;
     const response = await axios.get(url);
 
+    console.log(response.data);
     dispatch(updateGenericListAction(response.data));
   };
 };

@@ -39,5 +39,21 @@ export const getPostsApiCallAction = () => {
   };
 };
 
+export const getOrdersApiCallAction = () => {
+  return async (dispatch) => {
+    try {
+      const url = `http://localhost:8080/order/`;
+      const token = `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiaXNzIjoiY2RhYyIsImlhdCI6MTY2MjQ1NTk4NSwiZXhwIjoxNjYyNDU5NTg1fQ.lRgobHtrYAjUTeAEtvhQdqxBWS0r_46iNn8P0NtDvmx4-Dxl4koRsxJlMuIdv0mc9nOOyVd1o46OPd71s1qgJw`;
+      const headers = { Authorization: `Bearer ${token}` };
+      const response = await axios.get(url, { headers });
+
+      console.log(response.data);
+      dispatch(updatePostList(response.data));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+};
+
 export const { incrementCounter, updatePostList } = asyncSlice.actions;
 export default asyncSlice.reducer;

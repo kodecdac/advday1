@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getOrdersApiCallAction } from "../store/asyncslice";
 import {
   deleteGenericItem,
   deleteUserApiAction,
@@ -16,6 +17,8 @@ function GenericList() {
 
   useEffect(() => {
     dispatch(makeUserListApiAction());
+
+    dispatch(getOrdersApiCallAction());
   }, []);
 
   let { genericStore } = useSelector((state) => state);
