@@ -12,24 +12,13 @@ const genericSlice = createSlice({
     displayModalItem: undefined,
 
     displayToast: false,
+    displayErrorToast: false,
     genericList: [],
   },
 
   reducers: {
     updateGenericListAction: (state, action) => {
       state.genericList = action.payload;
-    },
-
-    addGenericItem: (state, action) => {
-      try {
-        // logic...
-        state.genericList.unshift(action.payload);
-
-        // success toast
-        // state.displayToast = true;
-      } catch (err) {
-        console.error(err);
-      }
     },
 
     updateGenericItem: (state, action) => {
@@ -51,8 +40,11 @@ const genericSlice = createSlice({
       state.genericList.splice(action.payload.index, 1);
     },
 
-    hideDispalyToast: (state) => {
-      state.displayToast = false;
+    toggleDispalyToast: (state) => {
+      state.displayToast = !state.displayToast;
+    },
+    toggleDispalyErrorToast: (state) => {
+      state.displayErrorToast = !state.displayErrorToast;
     },
 
     displayModalAction: (state, action) => {
@@ -74,10 +66,33 @@ export const makeUserListApiAction = () => {
   };
 };
 
+export const addUserApiAction = (user, setUser) => {
+  return async (dispatch) => {
+    try {
+      const url = `http://localhost:8080/user/`;
+      const response = await axios.post(url, user);
+
+      // Clean only in case of success
+      setUser({
+        username: "",
+        password: "",
+        email: "",
+        mobile: "",
+      });
+
+      dispatch(toggleDispalyToast());
+      setTimeout(() => dispatch(toggleDispalyToast()), 2500);
+    } catch (err) {
+      dispatch(toggleDispalyErrorToast());
+      setTimeout(() => dispatch(toggleDispalyErrorToast()), 2500);
+    }
+  };
+};
+
 export const {
   updateGenericListAction,
-  addGenericItem,
-  hideDispalyToast,
+  toggleDispalyToast,
+  toggleDispalyErrorToast,
   deleteGenericItem,
   ediUserRefAction,
   updateGenericItem,

@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { addGenericItem, updateGenericItem } from "../store/genericslice";
+import {
+  addGenericItem,
+  addUserApiAction,
+  updateGenericItem,
+} from "../store/genericslice";
 
 function GenericRegisterForm() {
   let dispatch = useDispatch();
@@ -23,16 +27,7 @@ function GenericRegisterForm() {
   };
 
   let addGenericUser = () => {
-    // VALIDATIONS
-    // REDUX DISPATCH
-    dispatch(addGenericItem(user));
-
-    setUser({
-      username: "",
-      password: "",
-      email: "",
-      mobile: "",
-    });
+    dispatch(addUserApiAction(user, setUser));
   };
 
   let updateGenericUser = () => {
@@ -104,6 +99,12 @@ function GenericRegisterForm() {
         {genericStore.displayToast && (
           <div className="alert alert-success mt-2">
             User Added Successfully
+          </div>
+        )}
+
+        {genericStore.displayErrorToast && (
+          <div className="alert alert-danger mt-2">
+            Error Occured, Please Try Again!
           </div>
         )}
       </div>
