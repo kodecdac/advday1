@@ -41,13 +41,6 @@ function GenericRegisterForm() {
     });
   };
 
-  // PROTECTION START THE COMPONENT
-  let { authStore } = useSelector((state) => state);
-  if (!authStore.loginStatus) {
-    return <Navigate to="/login" replace={true} />;
-  }
-  // PROTECTION ENDS THE COMPONENT
-
   return (
     <div className="row justify-content-center">
       <div className="col-md-8 col-sm-12 my-2">

@@ -11,13 +11,6 @@ function Playground() {
   let dispatch = useDispatch();
   let { asyncStore } = useSelector((state) => state);
 
-  // PROTECTION START THE COMPONENT
-  let { authStore } = useSelector((state) => state);
-  if (!authStore.loginStatus) {
-    return <Navigate to="/login" replace={true} />;
-  }
-  // PROTECTION ENDS THE COMPONENT
-
   return (
     <div>
       <PlaygrounApi />

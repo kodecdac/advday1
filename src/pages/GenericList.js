@@ -26,13 +26,6 @@ function GenericList() {
     navigate("/generic?edit=1");
   };
 
-  // PROTECTION START THE COMPONENT
-  let { authStore } = useSelector((state) => state);
-  if (!authStore.loginStatus) {
-    return <Navigate to="/login" replace={true} />;
-  }
-  // PROTECTION ENDS THE COMPONENT
-
   return (
     <>
       <div className="row justify-content-center">
