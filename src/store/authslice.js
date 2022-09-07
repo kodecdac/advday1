@@ -29,6 +29,9 @@ export const loginApiAction = (payload) => {
       const response = await axios.post(url, payload);
 
       if (response.status == "200") {
+        console.log(response.data.jwt);
+        localStorage.setItem("authjwt", response.data.jwt);
+
         // finally update the redux state
         dispatch(loginAction());
       }
@@ -45,6 +48,9 @@ export const logoutApiAction = (payload) => {
   return async (dispatch) => {
     // LOGOUT API
     // ...more logcal operation
+
+    // localStorage.clear();
+    localStorage.removeItem("authjwt");
 
     // finally update the redux state
     dispatch(logoutAction());

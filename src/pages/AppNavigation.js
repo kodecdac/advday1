@@ -16,9 +16,16 @@ function AppNavigation() {
 
 function AppNavigationNavBar() {
   let { authStore } = useSelector((state) => state);
+  const token = localStorage.getItem("authjwt");
 
   return (
-    <>{authStore.loginStatus ? <AuthroisedNavBar /> : <UnAuthroisedNavBar />}</>
+    <>
+      {token || authStore.loginStatus ? (
+        <AuthroisedNavBar />
+      ) : (
+        <UnAuthroisedNavBar />
+      )}
+    </>
   );
 }
 

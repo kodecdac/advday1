@@ -16,7 +16,7 @@ import Main from "./pages/Main";
 import Project from "./pages/Project";
 import Playground from "./pages/Playground";
 import Login from "./pages/Login";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const navigate = useNavigate();
@@ -80,7 +80,8 @@ function UnProctedRoute({ children }) {
 function ProtectedRoute({ children }) {
   let { authStore } = useSelector((state) => state);
 
-  if (!authStore.loginStatus) {
+  const token = localStorage.getItem("authjwt");
+  if (!token && !authStore.loginStatus) {
     return <Navigate to="/login" replace={true} />;
   }
 
