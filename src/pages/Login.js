@@ -1,11 +1,18 @@
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { loginApiAction } from "../store/authslice";
 
 function Login() {
   let dispatch = useDispatch();
+  let { authStore } = useSelector((state) => state);
+
+  let [user, setUser] = useState({ username: "", password: "" });
+  let handleInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   const processLoginAction = () => {
-    dispatch(loginApiAction());
+    dispatch(loginApiAction(user));
   };
 
   return (
@@ -19,12 +26,16 @@ function Login() {
           type="text"
           placeholder="Enter Username"
           className="form-control form-control-lg"
+          name="username"
+          onChange={handleInputChange}
         />
 
         <input
           type="password"
           placeholder="Enter Password"
           className="form-control form-control-lg mb-2"
+          name="password"
+          onChange={handleInputChange}
         />
 
         <input
@@ -33,6 +44,10 @@ function Login() {
           className="btn btn-lg btn-primary w-100"
           onClick={processLoginAction}
         />
+
+        {authStore?.loginError && (
+          <div className="alert alert-danger mt-2">Invalid Credetnials</div>
+        )}
       </div>
     </div>
   );

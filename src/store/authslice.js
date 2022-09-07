@@ -1,9 +1,11 @@
+import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "authStore",
   initialState: {
     loginStatus: false,
+    loginError: false,
   },
   reducers: {
     loginAction: (state) => {
@@ -12,16 +14,30 @@ const authSlice = createSlice({
     logoutAction: (state) => {
       state.loginStatus = false;
     },
+
+    toggleLoginError: (state) => {
+      state.loginError = !state.loginError;
+    },
   },
 });
 
 export const loginApiAction = (payload) => {
   return async (dispatch) => {
-    // LOGIN API
-    // ...more logcal operation
+    try {
+      // LOGIN API
+      const url = `http://localhost:8080/auth/authenticate/`;
+      const response = await axios.post(url, payload);
 
-    // finally update the redux state
-    dispatch(loginAction());
+      if (response.status == "200") {
+        // finally update the redux state
+        dispatch(loginAction());
+      }
+    } catch (err) {
+      console.log(err);
+      dispatch(toggleLoginError());
+
+      setTimeout(() => dispatch(toggleLoginError()), 2500);
+    }
   };
 };
 
@@ -35,5 +51,6 @@ export const logoutApiAction = (payload) => {
   };
 };
 
-export const { loginAction, logoutAction } = authSlice.actions;
+export const { loginAction, logoutAction, toggleLoginError } =
+  authSlice.actions;
 export default authSlice.reducer;
