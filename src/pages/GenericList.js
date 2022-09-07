@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import {
   deleteGenericItem,
   deleteUserApiAction,
@@ -25,6 +25,13 @@ function GenericList() {
 
     navigate("/generic?edit=1");
   };
+
+  // PROTECTION START THE COMPONENT
+  let { authStore } = useSelector((state) => state);
+  if (!authStore.loginStatus) {
+    return <Navigate to="/login" replace={true} />;
+  }
+  // PROTECTION ENDS THE COMPONENT
 
   return (
     <>

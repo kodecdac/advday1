@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import {
   getPostsApiCallAction,
   incrementCounter,
@@ -9,6 +10,13 @@ import {
 function Playground() {
   let dispatch = useDispatch();
   let { asyncStore } = useSelector((state) => state);
+
+  // PROTECTION START THE COMPONENT
+  let { authStore } = useSelector((state) => state);
+  if (!authStore.loginStatus) {
+    return <Navigate to="/login" replace={true} />;
+  }
+  // PROTECTION ENDS THE COMPONENT
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import {
   addGenericItem,
   addUserApiAction,
@@ -40,6 +40,13 @@ function GenericRegisterForm() {
       mobile: "",
     });
   };
+
+  // PROTECTION START THE COMPONENT
+  let { authStore } = useSelector((state) => state);
+  if (!authStore.loginStatus) {
+    return <Navigate to="/login" replace={true} />;
+  }
+  // PROTECTION ENDS THE COMPONENT
 
   return (
     <div className="row justify-content-center">
