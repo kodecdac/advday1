@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function AppNavigation() {
@@ -13,6 +14,14 @@ function AppNavigation() {
 }
 
 function AppNavigationNavBar() {
+  let { authStore } = useSelector((state) => state);
+
+  return (
+    <>{authStore.loginStatus ? <AuthroisedNavBar /> : <UnAuthroisedNavBar />}</>
+  );
+}
+
+function AuthroisedNavBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -31,6 +40,26 @@ function AppNavigationNavBar() {
             <Nav.Link to="/generic-list" as={Link}>
               Genric List
             </Nav.Link>
+            <Nav.Link to="/login" as={Link}>
+              Logout
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+function UnAuthroisedNavBar() {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand to="/" as={Link}>
+          CURD APP
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
             <Nav.Link to="/login" as={Link}>
               Login
             </Nav.Link>
