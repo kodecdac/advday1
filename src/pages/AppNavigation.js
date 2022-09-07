@@ -50,6 +50,9 @@ function AuthroisedNavBar() {
             <Nav.Link to="/generic-list" as={Link}>
               Genric List
             </Nav.Link>
+            <Nav.Link to="/order-list" as={Link}>
+              Order List
+            </Nav.Link>
             <Nav.Link onClick={() => dispatch(logoutApiAction())}>
               Logout
             </Nav.Link>

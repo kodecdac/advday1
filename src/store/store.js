@@ -4,6 +4,7 @@ import secondSliceReducer from "./secondslice";
 import genericSliceReducer from "./genericslice";
 import asyncSliceReducer from "./asyncslice";
 import authSliceReducer from "./authslice";
+import orderSliceReducer from "./orderslice";
 
 // this will give us STORE / GLOBAL STATE
 export default configureStore({
@@ -13,5 +14,6 @@ export default configureStore({
     genericStore: genericSliceReducer,
     asyncStore: asyncSliceReducer,
     authStore: authSliceReducer,
+    orderStore: orderSliceReducer,
   },
 });

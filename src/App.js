@@ -17,6 +17,7 @@ import Project from "./pages/Project";
 import Playground from "./pages/Playground";
 import Login from "./pages/Login";
 import { useDispatch, useSelector } from "react-redux";
+import OrderList from "./pages/OrderList";
 
 function App() {
   const navigate = useNavigate();
@@ -49,6 +50,14 @@ function App() {
           element={
             <ProtectedRoute>
               <GenericList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order-list"
+          element={
+            <ProtectedRoute>
+              <OrderList />
             </ProtectedRoute>
           }
         />
