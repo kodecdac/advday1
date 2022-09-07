@@ -31,6 +31,9 @@ function AppNavigationNavBar() {
             <Nav.Link to="/generic-list" as={Link}>
               Genric List
             </Nav.Link>
+            <Nav.Link to="/login" as={Link}>
+              Login
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
