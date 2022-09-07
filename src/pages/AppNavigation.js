@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutApiAction } from "../store/authslice";
 
 function AppNavigation() {
   return (
@@ -22,6 +23,8 @@ function AppNavigationNavBar() {
 }
 
 function AuthroisedNavBar() {
+  let dispatch = useDispatch();
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -40,7 +43,7 @@ function AuthroisedNavBar() {
             <Nav.Link to="/generic-list" as={Link}>
               Genric List
             </Nav.Link>
-            <Nav.Link to="/login" as={Link}>
+            <Nav.Link onClick={() => dispatch(logoutApiAction())}>
               Logout
             </Nav.Link>
           </Nav>

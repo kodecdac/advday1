@@ -27,6 +27,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route
           path="/playground"
           element={
@@ -52,10 +53,27 @@ function App() {
           }
         />
 
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <UnProctedRoute>
+              <Login />
+            </UnProctedRoute>
+          }
+        />
       </Routes>
     </>
   );
+}
+
+function UnProctedRoute({ children }) {
+  let { authStore } = useSelector((state) => state);
+
+  if (authStore.loginStatus) {
+    return <Navigate to="/playground" replace={true} />;
+  }
+
+  return children;
 }
 
 // JSX - COMPNENT

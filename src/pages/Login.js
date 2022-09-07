@@ -1,4 +1,13 @@
+import { useDispatch } from "react-redux";
+import { loginApiAction } from "../store/authslice";
+
 function Login() {
+  let dispatch = useDispatch();
+
+  const processLoginAction = () => {
+    dispatch(loginApiAction());
+  };
+
   return (
     <div
       className="row justify-content-center align-items-center"
@@ -22,6 +31,7 @@ function Login() {
           type="button"
           value="LOGIN"
           className="btn btn-lg btn-primary w-100"
+          onClick={processLoginAction}
         />
       </div>
     </div>
