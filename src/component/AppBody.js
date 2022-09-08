@@ -4,6 +4,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useSelector } from "react-redux";
 
 // MEMBER 3
+// Compnoent :: React Element
 function AppBody() {
   let [user] = useState({});
 
@@ -25,7 +26,7 @@ function AppBody() {
 
       <div className="row m-4">
         {[1, 1, 1, 1, 1, 1, 1, 11, 1].map((item, index) => (
-          <div className="col-4">
+          <div className="col-4" key={index}>
             <Card key={index}>
               <Card.Img
                 variant="top"
