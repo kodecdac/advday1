@@ -1,43 +1,52 @@
 import { useState } from "react";
+import { Button, Card } from "react-bootstrap";
 import { ErrorBoundary } from "react-error-boundary";
 import { useSelector } from "react-redux";
 
 // MEMBER 3
 function AppBody() {
-  let { abcdStore } = useSelector((state) => state);
   let [user] = useState({});
 
   return (
-    <div className="my-1">
-      <div className="alert alert-dark mb-0">Main Body</div>
+    <>
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8">
+          <div
+            className="d-flex justify-content-center align-items-center h4"
+            style={{ height: "350px" }}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
+            ipsum tempore laborum ut veritatis non molestiae magni nihil
+            voluptas nostrum consequuntur earum obcaecati sunt ex, vero amet
+            illum libero laboriosam.
+          </div>
+        </div>
+      </div>
 
-      <h1>{user.id}</h1>
-      <h1>{abcdStore.id}</h1>
-
-      <p className="alert alert-secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam neque
-        eveniet cum voluptatum maiores suscipit at expedita, et ab odit cumque?
-        Harum corporis possimus repellendus nisi iusto voluptas et, inventore
-        optio enim! Nisi pariatur optio accusamus modi quia et fugit voluptatem
-        sunt hic dignissimos nihil ut necessitatibus autem aperiam, earum
-        accusantium quod quidem veritatis voluptatibus architecto molestias
-        voluptates eos vero ipsam. Numquam maiores quam pariatur odit ullam
-        itaque labore praesentium, consequuntur magnam, minima enim maxime a
-        quia. Ipsam, odio! Quasi magnam dolore iusto itaque voluptate!
-        Voluptatem animi tempora odio laboriosam ad accusamus, eum harum eos
-        blanditiis corrupti, aspernatur eius. Aliquid atque harum cum saepe.
-        Nulla harum voluptas, dolorum optio debitis fugit mollitia, explicabo
-        vero quidem quam sunt itaque praesentium ad deleniti est porro, nemo
-        tenetur rerum officiis. Suscipit, voluptatem error ullam sint molestias
-        hic tenetur, nihil incidunt in rerum perferendis sunt qui ducimus ad
-        quam voluptate deserunt voluptatum dolores assumenda dolorem consectetur
-        aliquam vero! Unde voluptate saepe ut dicta impedit voluptas eos tempore
-        sunt harum. Quia, quod. Hic, dolorum! Provident veniam porro aliquid
-        asperiores esse possimus quas officia atque nostrum, velit quam ullam
-        repudiandae! Rem aperiam dolore corrupti eius ea, neque sit ratione
-        consectetur consequatur repellat sapiente veniam, voluptatem ipsam?
-      </p>
-    </div>
+      <div className="row m-4">
+        {[1, 1, 1, 1, 1, 1, 1, 11, 1].map((item, index) => (
+          <div className="col-4">
+            <Card key={index}>
+              <Card.Img
+                variant="top"
+                src={`http://picsum.photos/${200 + index}`}
+                style={{ height: "200px", objectFit: "cover" }}
+              />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Voluptates nesciunt, officiis necessitatibus commodi error
+                  fugit, animi laudantium alias illo doloribus ipsum placeat
+                  deleniti, iste nam! Sequi minima repellendus quae ex?
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
