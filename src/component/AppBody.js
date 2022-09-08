@@ -1,8 +1,19 @@
+import { useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { useSelector } from "react-redux";
+
 // MEMBER 3
 function AppBody() {
+  let { abcdStore } = useSelector((state) => state);
+  let [user] = useState({});
+
   return (
     <div className="my-1">
       <div className="alert alert-dark mb-0">Main Body</div>
+
+      <h1>{user.id}</h1>
+      <h1>{abcdStore.id}</h1>
+
       <p className="alert alert-secondary">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam neque
         eveniet cum voluptatum maiores suscipit at expedita, et ab odit cumque?
