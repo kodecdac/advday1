@@ -27,7 +27,9 @@ function GenericList() {
   };
 
   const gotoGenericView = (item) => {
-    navigate(`/generic/${item.username}`);
+    navigate(
+      `/generic/${item.username}?email=${item.email}&mobile=${item.mobile}`
+    );
   };
 
   return (
