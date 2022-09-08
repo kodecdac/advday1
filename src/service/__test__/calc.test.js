@@ -6,6 +6,5 @@ test("test1", () => {
 });
 
 test("2 + 3 should be equal to 5", () => {
-  const output = sum(2, 3);
-  expect(output).toBe(5);
+  expect(sum(2, 3)).toBe(5);
 });
