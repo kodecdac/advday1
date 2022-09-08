@@ -18,6 +18,7 @@ import Playground from "./pages/Playground";
 import Login from "./pages/Login";
 import { useDispatch, useSelector } from "react-redux";
 import OrderList from "./pages/OrderList";
+import GenericView from "./pages/GenericView";
 
 function App() {
   const navigate = useNavigate();
@@ -42,6 +43,14 @@ function App() {
           element={
             <ProtectedRoute>
               <GenericRegisterForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/generic/:username"
+          element={
+            <ProtectedRoute>
+              <GenericView />
             </ProtectedRoute>
           }
         />

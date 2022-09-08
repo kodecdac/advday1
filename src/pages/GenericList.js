@@ -26,6 +26,10 @@ function GenericList() {
     navigate("/generic?edit=1");
   };
 
+  const gotoGenericView = (item) => {
+    navigate(`/generic/${item.username}`);
+  };
+
   return (
     <>
       <div className="row justify-content-center">
@@ -43,7 +47,7 @@ function GenericList() {
             </thead>
             <tbody>
               {genericStore.genericList.map((item, index) => (
-                <tr key={index}>
+                <tr key={index} onClick={() => gotoGenericView(item)}>
                   <th scope="row">{index + 1}</th>
                   <td>{item.username}</td>
                   <td>******</td>
